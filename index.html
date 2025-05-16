@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>JS From Scratch</title>
+  <script type="module" src="index.js" defer></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div id="start-screen">
+    <h1 id="start-screen-text">Mini-Jeu JS From Scratch</h1>
+    <div id="character-selection">
+      <div class="character selected" data-character="chicken" draggable="true"></div>
+      <div class="character" data-character="reverse-chicken" draggable="true"></div>
+      <div class="character" data-character="bomb" draggable="true"></div>
+    </div>
+    <div id="character-select"></div>
+    <button id="start-button">Commencer</button>
+  </div>
+
+  <div id="game" class="hidden">
+    <div id="lives-display">❤️❤️❤️</div>
+    <div id="score-display">Score: 0</div>
+    <div id="player"></div>
+    <div id="platform-1" class="platform"></div>
+    <div id="platform-2" class="platform"></div>
+
+    <div id="game-over-screen" class="hidden">
+      <h1 id="game-over-text">Game Over</h1>
+      <button id="restart-button">Rejouer</button>
+      <div id="stats-display">
+        <div id="best-score">Meilleur Score: 0</div>
+        <div id="average-score">Score Moyen: 0</div>
+        <div id="won-number">Nombre de victoire: 0</div>
+        <div id="most-played">Personnage le plus joué: aucun</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
