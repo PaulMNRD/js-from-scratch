@@ -25,19 +25,19 @@
     position: absolute;
     bottom: -60px;
     left: -60px;
-    background-image: url("/assets/bomb.png");
+    background-image: url("assets/bomb.png");
     background-size: contain;
     background-repeat: no-repeat;
     /*border: 1px solid red;*/
 }
 .chicken {
-    background-image: url("/assets/player.png");
+    background-image: url("assets/player.png");
 }
 .bomb {
-    background-image: url("/assets/bomb.png");
+    background-image: url("assets/bomb.png");
 }
 .reverse-chicken {
-    background-image: url("/assets/reverse-player.png");
+    background-image: url("assets/reverse-player.png");
 }
 
 #game-over-screen{
