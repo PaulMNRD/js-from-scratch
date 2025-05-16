@@ -107,5 +107,5 @@ export class Game {
         if (this.state.lives <= 0) {
             this.game_over()
         }
-    }
+    }git
 }
