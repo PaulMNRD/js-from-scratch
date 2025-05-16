@@ -30,6 +30,7 @@
     background-repeat: no-repeat;
     /*border: 1px solid red;*/
 }
+/*
 .chicken {
     background-image: url("assets/player.png");
 }
@@ -38,7 +39,7 @@
 }
 .reverse-chicken {
     background-image: url("assets/reverse-player.png");
-}
+}*/
 
 #game-over-screen{
     position: absolute;
@@ -103,30 +104,24 @@
     cursor: pointer;
     background-size: contain;
     background-repeat: no-repeat;
-    transition: border 0.2s ease;
-    border: 2px solid transparent;
     margin-bottom: 10px;
 }
-.character[data-character="chicken"] {
+[data-character="chicken"] {
     background-image: url("assets/player.png");
 }
-.character[data-character="reverse-chicken"] {
+[data-character="reverse-chicken"] {
     background-image: url("assets/reverse-player.png");
 }
-.character[data-character="bomb"] {
+[data-character="bomb"] {
     background-image: url("assets/bomb.png");
 }
 
-.character.selected {
-    border-color: red;
+.rotate {
     animation: rotate360 0.6s ease;
 }
 
 #character-select {
     border: 2px solid black;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 5px;
 }
 
 .hidden {

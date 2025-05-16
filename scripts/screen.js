@@ -23,10 +23,9 @@ export function update_hud(state) {
 }
 
 //MENUS
-let character = "chicken"
 const RESTART_BTN = document.getElementById("restart-button");
 const START_BTN = document.getElementById("start-button");
-const CHARACTERS_SELECTORS = document.querySelectorAll(".character")
+const CHARACTERS_SELECTORS = document.querySelectorAll(".character:not(#character-select)")
 const CHARACTERS_SELECTOR = document.getElementById("character-select");
 export const AUDIO = new Audio("assets/music.mp3");
 AUDIO.loop = true;
@@ -37,15 +36,13 @@ RESTART_BTN.addEventListener("click", () => {
     new Game();
 });
 START_BTN.addEventListener("click", () => {
-    PLAYER.classList.add(character)
+    PLAYER.dataset.character = CHARACTERS_SELECTOR.dataset.character;
     START_SCREEN.classList.add('hidden');
     GAME.classList.remove('hidden');
     AUDIO.play();
     new Game();
 });
 CHARACTERS_SELECTORS.forEach(char => {
-    if (char.dataset.character === character) char.classList.add("selected");
-
     char.addEventListener("dragstart", e => {
         e.dataTransfer.setData("text/plain", e.target.dataset.character);
     });
@@ -58,12 +55,12 @@ CHARACTERS_SELECTOR.addEventListener("drop", e => {
     const sel_char = e.dataTransfer.getData("text/plain");
     CHARACTERS_SELECTORS.forEach(char => {
         if (char.dataset.character === sel_char) {
-            char.classList.add("selected")
+            char.classList.add("rotate")
             return
         }
-        char.classList.remove("selected")
+        char.classList.remove("rotate")
     });
-    character = sel_char;
+    e.target.dataset.character = sel_char;
 })
 
 export const PLATFORMS = document.querySelectorAll(".platform");
@@ -74,6 +71,7 @@ const WON_NUMBER = document.getElementById("won-number");
 const MOST_PLAYED = document.getElementById("most-played");
 const history = JSON.parse(localStorage.getItem("history")) || [];
 export function writeStats(score) {
+    let character = CHARACTERS_SELECTOR.dataset.character
     history.push({character, score})
 
     const won_number = history.filter(h => h.score > 200).length;

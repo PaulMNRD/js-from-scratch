@@ -11,6 +11,7 @@ export class Player {
         //Controllers
         this.direction = 0;
         this.isJumping = false;
+        this.forceFall = false;
         this.groundY = 0;
 
         //Constants
@@ -21,26 +22,19 @@ export class Player {
     }
 
     update(delta) {
-        //this.handleJump(delta);
-
         this.x += this.direction * this.speed * delta;
         this.y += this.vy * delta;
 
-        if (this.y <= this.groundY) {
+        if (this.y <= this.groundY && !(this.forceFall && this.y > 0)) {
             this.y = this.groundY;
             this.vy = 0;
             this.isJumping = false;
+            this.forceFall = false;
         } else {
             this.vy -= this.gravity * delta;
         }
 
         this.draw()
-    }
-
-    handleJump(delta) {
-        if (this.isJumping) {
-            this.vy -= this.gravity * delta;
-        }
     }
 
     handleInput(keys) {
@@ -49,6 +43,7 @@ export class Player {
             this.isJumping = true
             this.vy = this.jumpForce;
         }
+        if (keys["KeyS"]) this.forceFall = true;
     }
 
     draw(){
